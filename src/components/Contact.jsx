@@ -1,0 +1,167 @@
+import React from 'react'
+import { styled } from 'styled-components'
+// import Map from './Map';
+// import {Map} from'./Map';
+import { OrbitControls, Stage } from '@react-three/drei'
+import { Canvas } from '@react-three/fiber'
+import Chair from './Chair'
+import Pc from './Pc'
+import Space from './Space'
+import House from './House'
+import WebDev from './WebDev'
+import Scope from './Scope'
+import House2 from './House2'
+import Bob from './Bob'
+import Boxes from './Boxes'
+import Phone from './Phone'
+import Planet from './Planet'
+
+
+const Section = styled.div`
+  height: 100vh;
+  scroll-snap-align: center;
+`;
+
+const Container = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+`;
+
+const Left = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  @media only screen and (max-width: 768px) {
+    justify-content: center;
+  }
+`;
+
+const Title = styled.h1`
+  font-weight: 200;
+`;
+
+const Form = styled.form`
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  @media only screen and (max-width: 768px) {
+    width: 300px;
+  }
+`;
+
+const Input = styled.input`
+  padding: 20px;
+  background-color: #e8e6e6;
+  border: none;
+  border-radius: 5px;
+`;
+
+const TextArea = styled.textarea`
+  padding: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e8e6e6;
+`;
+
+const Button = styled.button`
+  background-color: #da4ea2;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 20px;
+`;
+
+const Right = styled.div`
+  flex: 1;
+
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+
+
+
+const Img = styled.img`
+
+width:500px;
+height:300px
+object-fit:contain;
+// position: absolute; turning this on makes the image move with the scroll for some reason
+top: 25% ;
+bottom: 0;
+left: 0;
+right: 0;
+margin: auto;
+// animation: animate 2s infinite ease alternate;
+
+// @keyframes animate {
+//   to {
+//     transform: translateY(20px);
+//   }
+// }
+
+
+`;
+
+const handleSubmit =e=>{
+  e.preventDefault()
+}
+
+
+const contact = () => {
+  return (
+    <Section>
+      <Container>
+        <Left>
+          <Form onSubmit={handleSubmit}> 
+            <Title>Contact us</Title>
+            <Input placeholder="Name" name="name" />
+            <Input placeholder="Email" name="email" />
+            <TextArea placeholder="Write your message here" rows={5}/>
+            <Button type="submit">Send</Button>
+          </Form>
+          
+          </Left>
+        <Right>
+          {/* <Map/> */}
+          {/* <Img src="./img/pngegg.png"  /> */}
+
+          <Canvas>
+    <OrbitControls enableZoom={false}  autoRotate autoRotateSpeed={5}/>
+    
+    <ambientLight intensity={2}>
+        <directionalLight position={[3,2,1]}/>
+      </ambientLight>
+
+    {/* <Stage environment="city" intensity={0.6}/> */}
+    {/* <Chair enableZoom={false}  scale={5}/> */}
+    {/* <Space enableZoom={false}  scale={0.5}/> */}
+    {/* <WebDev enableZoom={false}  scale={0.3}/> */}
+    {/* <House enableZoom={false}  scale={0.2}/> */}
+    {/* <House2 enableZoom={false}  scale={0.002}/> */}
+    {/* <Bob enableZoom={false}  scale={1}/> */}
+    {/* <Boxes enableZoom={false}  scale={100}/> */}
+    {/* <Scope enableZoom={false}  scale={1}/> */}
+
+    {/* <Phone enableZoom={false}  scale={1}/> */}
+    <Planet  enableZoom={false}  scale={3}/>
+  </Canvas>
+
+
+
+
+        </Right>
+      </Container>
+    </Section>
+  )
+}
+
+export default contact
